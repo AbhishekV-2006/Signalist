@@ -3,10 +3,20 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import InputField from "@/components/forms/InputField";
 import FooterLink from "@/components/forms/FooterLink";
+import { signInWithEmail, signUpWithEmail } from "@/lib/actions/auth.actions";
+import { toast } from "sonner";
+import { signInEmail } from "better-auth/api";
+import { useRouter } from "next/navigation";
 
 const SignIn = () => {
+  const router = useRouter();
 
-  const {handleSubmit, register,control, formState: { errors, isSubmitting },} = useForm<SignInFormData>({
+  const {
+    handleSubmit,
+    register,
+    control,
+    formState: { errors, isSubmitting },
+  } = useForm<SignInFormData>({
     defaultValues: {
       email: "",
       password: "",
@@ -16,9 +26,13 @@ const SignIn = () => {
 
   const onSubmit = async (data: SignInFormData) => {
     try {
-      console.log("Form data:", data);
-    } catch (err) {
-      console.error("Sign in failed", err);
+      const result = await signInWithEmail(data);
+      if (result.success) router.push("/");
+    } catch (e) {
+      console.error(e);
+      toast.error("Sign in failed", {
+        description: e instanceof Error ? e.message : "Failed to sign in.",
+      });
     }
   };
 
@@ -54,14 +68,14 @@ const SignIn = () => {
           {isSubmitting ? "Logging In" : "Log In"}
         </Button>
 
-        <FooterLink 
+        <FooterLink
           text="Don't have an Account?"
           linkText="SignUp"
           href="/sign-up"
         />
       </form>
     </>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;
