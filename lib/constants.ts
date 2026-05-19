@@ -1,7 +1,7 @@
 export const NAV_ITEMS = [
     { href: '/', label: 'Dashboard' },
     { href: '/search', label: 'Search' },
-    // { href: '/watchlist', label: 'Watchlist' },
+    { href: '/watchlist', label: 'Watchlist' },
 ];
 
 // Sign-up form select options
@@ -171,7 +171,7 @@ export const MARKET_DATA_WIDGET_CONFIG = {
 };
 
 export const SYMBOL_INFO_WIDGET_CONFIG = (symbol: string) => ({
-    symbol: symbol.toUpperCase(),
+    symbol: symbol?.toUpperCase(),
     colorTheme: 'dark',
     isTransparent: true,
     locale: 'en',
@@ -192,7 +192,7 @@ export const CANDLE_CHART_WIDGET_CONFIG = (symbol: string) => ({
     locale: 'en',
     save_image: false,
     style: 1,
-    symbol: symbol.toUpperCase(),
+     symbol: symbol?.toUpperCase(),
     theme: 'dark',
     timezone: 'Etc/UTC',
     backgroundColor: '#141414',
