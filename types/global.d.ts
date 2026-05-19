@@ -64,6 +64,25 @@ declare global {
     image: string;
   };
 
+      type QuoteData = {
+        c?: number;
+        dp?: number;
+    };
+
+    type ProfileData = {
+        name?: string;
+        marketCapitalization?: number;
+    };
+
+    type FinancialsData = {
+        metric?: { [key: string]: number };
+    };
+
+        type WatchlistTableProps = {
+        watchlist: StockWithData[];
+    };
+
+
   type WatchlistNewsProps = {
     watchlistSymbols?: string[]; // Array of stock symbols to fetch news for
     watchlistStocks?: StockWithData[]; // Array of watchlist stocks with full data
