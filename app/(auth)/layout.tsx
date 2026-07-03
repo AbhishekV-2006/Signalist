@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { auth } from "@/lib/better-auth/auth";
-import { headers } from "next/dist/server/request/headers";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 const Layout = async ({children} : {children : React.ReactNode}) => {
