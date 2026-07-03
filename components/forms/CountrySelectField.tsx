@@ -23,6 +23,14 @@ import { cn } from "@/lib/utils";
 import countryList from "react-select-country-list";
 import ReactCountryFlag from "react-country-flag";
 
+interface CountrySelectProps {
+  name: string;
+  label: string;
+  control: Control<any>;
+  error?: FieldError;
+  required?: boolean;
+}
+
 const CountrySelect = ({
   value,
   onChange,
